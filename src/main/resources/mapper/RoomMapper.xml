@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.example.mapper.RoomMapper">
+    <select id="findRoomStatus" parameterType="com.first.example.dto.HostelRoom" resultType="Integer">
+        select status
+        from room
+        where roomID = #{roomId}
+          and hostelID = #{hostelId}
+    </select>
+    <update id="setRoomStatus" parameterType="com.first.example.dto.HostelRoom">
+        update room
+        set status        = #{status},
+            administrator = #{administrator}
+        where roomID = #{roomId}
+          and hostelID = #{hostelId}
+    </update>
+    <select id="findAllRooms" resultType="Integer">
+        select count(*)
+        from room
+        where hostelID = #{hostelId};
+    </select>
+    <select id="findRooms" parameterType="Integer" resultType="com.first.example.bean.Room">
+        select *
+        from room
+        where hostelID = #{hostelId}
+        limit #{pageNo},#{pageSize}
+    </select>
+    <select id="findDefault" resultType="com.first.example.bean.Room">
+        select *
+        from room
+        where hostelID = #{hostelId}
+          and status != 1
+          and type = #{type}
+    </select>
+</mapper>
