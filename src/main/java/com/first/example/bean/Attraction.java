@@ -14,4 +14,6 @@ public class Attraction {
     private String address;
     private Double price;
     private String name;
+    private String files;
+    private String url;
 }

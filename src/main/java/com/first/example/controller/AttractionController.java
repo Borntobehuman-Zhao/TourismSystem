@@ -64,4 +64,17 @@ public class AttractionController {
                 .setCode(ResultCode.FAIL)
                 .setMessage("该景点周围暂无酒店");
     }
+    @GetMapping("findAllAttraction")
+    public Result findAll(){
+        List<Attraction> attractions = attractionService.findAll();
+        if(attractions != null){
+            return new Result<>()
+                    .setCode(ResultCode.SUCCESS)
+                    .setMessage("所有酒店")
+                    .setData(attractions.toArray());
+        }
+        return new Result()
+                .setCode(ResultCode.FAIL)
+                .setMessage("查询失败");
+    }
 }

@@ -2,6 +2,8 @@ package com.first.example.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author : Zhaoy
  * @motto :生而为人我很抱歉
@@ -13,4 +15,6 @@ public class HostelRoom {
     private Integer hostelId;
     private Integer status;
     private String administrator;
+    private Date startTime;
+    private Date endTime;
 }

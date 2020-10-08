@@ -7,6 +7,8 @@ CREATE TABLE `room` (
                         `hostelID` int(11) NOT NULL,
                         `price` double NOT NULL,
                         `type` varchar(10) NOT NULL ,
+                        `startTime` date,
+                        `endTime` date,
                         PRIMARY KEY (`id`),
                         CONSTRAINT `room_hostelID` FOREIGN KEY (`hostelID`) REFERENCES `hostel` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

@@ -14,6 +14,5 @@ public class Hostel {
     private String name;
     private String phone;
     private String address;
-    private MultipartFile files;
     private String url;
 }

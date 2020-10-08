@@ -39,5 +39,10 @@ public interface AttractionMapper {
      */
     List<Hostel> findHostel(@Param("attractionId") Integer attractionId);
 
+    /**
+     * 查询所有景点
+     * @return 景点列表
+     */
+    List<Attraction> findAll();
 
 }

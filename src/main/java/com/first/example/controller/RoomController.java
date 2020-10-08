@@ -1,5 +1,6 @@
 package com.first.example.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.first.example.bean.Room;
 import com.first.example.dto.HostelRoom;
 import com.first.example.result.Result;
@@ -53,7 +54,7 @@ public class RoomController {
     }
 
     @PostMapping("/setStatus")
-    public Result setStatus(@RequestBody HostelRoom hostelRoom) {
+    public Result setStatus(@RequestBody @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")HostelRoom hostelRoom) {
         if (roomService.findRoomStatus(hostelRoom) == 0) {
             boolean flag = roomService.setRoomStatus(hostelRoom);
             if (flag) {
@@ -68,9 +69,10 @@ public class RoomController {
                 .setMessage("返回错误");
     }
 
-    @PostMapping(value = "/findDefault")
+    @PostMapping(value = "/findDefault", produces = "application/json;charset=utf-8")
     public Result findDefault(@RequestBody Room room) {
         List<Room> lists = roomService.findDefault(room.getHostelId(), room.getType());
+        System.out.println(lists);
         if (lists != null) {
             return new Result<>()
                     .setCode(ResultCode.SUCCESS)

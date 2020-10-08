@@ -35,4 +35,12 @@ public interface HostelMapper {
      * @return 返回景点列表
      */
     public List<Attraction> findAttractions(@Param("hostelId") Integer hostelId);
+
+    /**
+     * 查找酒店
+     * @param hostelId 酒店号
+     * @return 酒店实体
+     */
+    public Hostel findHostel(@Param("hostelId") Integer hostelId);
+
 }

@@ -1,5 +1,6 @@
 package com.first.example.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.first.example.bean.Attraction;
 import com.first.example.bean.Hostel;
 import com.first.example.result.Result;
@@ -8,10 +9,7 @@ import com.first.example.service.HostelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ClassUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -36,8 +34,9 @@ public class HostelController {
     @Autowired
     HostelService hostelService;
 
-    @GetMapping(value = "/hostel", produces = "application/json;charset=utf-8")
-    public Result findHostels(@RequestParam("limit") Integer limit) {
+    @PostMapping(value = "/hostel", produces = "application/json;charset=utf-8")
+    public Result hostels(@RequestBody String params) {
+        Integer limit = JSONObject.parseObject(params).getInteger("limit");
         List<Hostel> listHostels = hostelService.findHostelByLimit(limit);
         if (listHostels != null) {
             return new Result<>()
@@ -62,6 +61,21 @@ public class HostelController {
         return new Result<>()
                 .setCode(ResultCode.FAIL)
                 .setMessage("暂无合作景点");
+    }
+
+    @PostMapping(value = "/findHostel", produces = "application/json;charset=utf-8")
+    public Result findHostel(@RequestBody String params) {
+        Integer hostelId = JSONObject.parseObject(params).getInteger("hostelId");
+        Hostel hostel = hostelService.findHostel(hostelId);
+        if (hostel != null) {
+            return new Result<>()
+                    .setCode(ResultCode.SUCCESS)
+                    .setMessage("查询到酒店")
+                    .setData(hostel);
+        }
+        return new Result<>()
+                .setCode(ResultCode.FAIL)
+                .setMessage("暂无推荐酒店");
     }
 
     /*@PostMapping("/upload")

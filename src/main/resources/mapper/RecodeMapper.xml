@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.example.mapper.RecodeMapper">
+    <insert id="insertRecode" parameterType="com.first.example.bean.Recode" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into recording(customerID, hostelID, roomID, time)
+        VALUES (#{customerId}, #{hostelId}, #{roomId}, #{time})
+    </insert>
+    <select id="findRecode" parameterType="Integer" resultType="com.first.example.bean.Recode">
+        select *
+        from recording
+        where customerID = #{customerId}
+    </select>
+</mapper>

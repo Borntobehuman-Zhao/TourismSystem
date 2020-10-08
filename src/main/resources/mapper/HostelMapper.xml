@@ -15,5 +15,9 @@
         where partnership.hostelID = #{hostelId}
           and attractionsID = attractions.id
     </select>
-
+    <select id="findHostel" parameterType="Integer" resultType="com.first.example.bean.Hostel">
+        select *
+        from hostel
+        where id = #{hostelId}
+    </select>
 </mapper>

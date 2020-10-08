@@ -22,4 +22,7 @@
         where attractionsID = #{attractionId}
           and hostelID = hostel.id
     </select>
+    <select id="findAll" resultType="com.first.example.bean.Attraction">
+        select * from attractions
+    </select>
 </mapper>

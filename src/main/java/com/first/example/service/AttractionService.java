@@ -31,4 +31,10 @@ public interface AttractionService {
      * @return 查询到的酒店列表
      */
     List<Hostel> findHostel(Integer attractionId);
+
+    /**
+     * 查询所有景点
+     * @return 景点列表
+     */
+    List<Attraction> findAll();
 }

@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
  * @motto :生而为人我很抱歉
  * @date : 2020/9/23 9:31
  */
-@Controller
-public class LoginController {
+@RestController
+public class CustomerController {
     @Autowired
     CustomerService customerService;
 
@@ -61,5 +61,20 @@ public class LoginController {
         return new Result()
                 .setCode(ResultCode.INTERNAL_SERVER_ERROR)
                 .setMessage("注册失败");
+    }
+    @PostMapping("findByPhone")
+    public Result findByPhone(@RequestBody Customer  customer){
+        Customer rescustomer = customerService.findByPhone((customer.getPhone().replace("\"","")).trim());
+        System.out.println((customer.getPhone().replace("\"","")).trim());
+        System.out.println(rescustomer);
+        if(rescustomer != null){
+            return new Result<>()
+                    .setCode(ResultCode.SUCCESS)
+                    .setMessage("查到用户")
+                    .setData(rescustomer);
+        }
+        return new Result()
+                .setCode(ResultCode.FAIL)
+                .setMessage("成功");
     }
 }

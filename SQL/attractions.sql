@@ -5,6 +5,8 @@ CREATE TABLE `attractions` (
                                `address` varchar(255) NOT NULL,
                                `price` double NOT NULL,
                                `name` varchar(255) NOT NULL,
+                               `files` varchar(255),
+                               `url` varchar(255),
                                PRIMARY KEY (`id`),
                                UNIQUE KEY `attractions_name_uindex` (`name`),
                                UNIQUE KEY `attractions_phone_uindex` (`phone`)

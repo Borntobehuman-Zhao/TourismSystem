@@ -48,4 +48,19 @@ public class HostelServiceImpl implements HostelService {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    /**
+     * 查找酒店
+     *
+     * @param hostelId 酒店号
+     * @return 酒店实体
+     */
+    @Override
+    public Hostel findHostel(Integer hostelId) {
+        try{
+            return hostelMapper.findHostel(hostelId);
+        }catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }

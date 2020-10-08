@@ -65,4 +65,18 @@ public class AttractionServiceImpl implements AttractionService {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    /**
+     * 查询所有景点
+     *
+     * @return 景点列表
+     */
+    @Override
+    public List<Attraction> findAll() {
+        try {
+            return attractionMapper.findAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }

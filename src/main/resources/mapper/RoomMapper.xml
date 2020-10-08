@@ -12,6 +12,8 @@
     <update id="setRoomStatus" parameterType="com.first.example.dto.HostelRoom">
         update room
         set status        = #{status},
+            startTime     = #{startTime},
+            endTime       = #{endTime},
             administrator = #{administrator}
         where roomID = #{roomId}
           and hostelID = #{hostelId}

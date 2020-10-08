@@ -1,5 +1,5 @@
 CREATE TABLE `hostel` (
-                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `id` int(11) NOT NULL AUTO_INCREMENT  ,
                           `address` varchar(255) DEFAULT NULL,
                           `phone` varchar(11) NOT NULL,
                           `name` varchar(255) DEFAULT NULL,

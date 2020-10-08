@@ -2,6 +2,8 @@ package com.first.example.bean;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author : Zhaoy
  * @motto :生而为人我很抱歉
@@ -17,4 +19,6 @@ public class Room {
     private Integer hostelId;
     private Double price;
     private String type;
+    private Date startTime;
+    private Date endTime;
 }
